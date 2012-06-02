@@ -86,7 +86,7 @@ static void qt_bit_aligned_view_test(int format_num, std::map<int, QString> &tab
  *  table : a mapping table of the enumerator number to the format of QImage
  */
 template<typename SrcType, typename DstType = SrcType>
-static void qt_byte_aligned_view_test(int format_num, std::map<int, QString> &table)
+static void qt_packed_aligned_view_test(int format_num, std::map<int, QString> &table)
 {                
     QImage src("../GIL_with_Qt/images_00/lena/lena.jpg");
     src = src.convertToFormat(QImage::Format(format_num) );
@@ -126,15 +126,15 @@ private :
     int i;
 };
 
-struct copy_byte_aligned_image
+struct copy_packed_aligned_image
 {
-    copy_byte_aligned_image(std::vector<int> const &format_num, std::map<int, QString> &table)
+    copy_packed_aligned_image(std::vector<int> const &format_num, std::map<int, QString> &table)
         : format_num_(format_num), table_(table), i(0) {}
 
     template<typename T>
     void operator()(T const&)
     {
-        qt_byte_aligned_view_test<T>(format_num_[i++], table_);
+        qt_packed_aligned_view_test<T>(format_num_[i++], table_);
     }
 
 private :
@@ -145,6 +145,6 @@ private :
 
 void read_bit_aligned_image();
 
-void read_byte_aligned_image();
+void read_packed_aligned_image();
 
 #endif // IVIEW_FACTORY_UNIT_TEST_HPP

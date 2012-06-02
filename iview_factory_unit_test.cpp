@@ -19,7 +19,7 @@ void read_bit_aligned_image()
   boost::mpl::for_each<type>(copy_bit_aligned_image(bit_aligned_format, bit_aligned_table) );
 }
 
-void read_byte_aligned_image()
+void read_packed_aligned_image()
 {
     std::map<int, QString> packed_aligned_table = {
         {3, "Format_Indexed8"},                //gray8_view_t
@@ -38,5 +38,5 @@ void read_byte_aligned_image()
     typedef boost::mpl::vector<gil::gray8_view_t, gil::bgra8_view_t, gil::bgra8_view_t, gil::bgra8_view_t,
                                qt::rgb565_view_t, qt::rgb655_view_t, qt::bgra4444_view_t, qt::bgra4444_view_t> type;
 
-    boost::mpl::for_each<type>(copy_byte_aligned_image(byte_aligned_format, packed_aligned_table) );
+    boost::mpl::for_each<type>(copy_packed_aligned_image(byte_aligned_format, packed_aligned_table) );
 }

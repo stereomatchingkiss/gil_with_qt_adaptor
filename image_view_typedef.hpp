@@ -27,6 +27,13 @@
 
 namespace boost{ namespace gil { namespace qt {
 
+typedef bit_aligned_image1_type<1, gray_layout_t>::type gray1_image_t;
+typedef gray1_image_t::view_t gray1_view_t;
+
+typedef packed_pixel_type<bits8, boost::mpl::vector4_c<unsigned, 2, 2, 2, 2>, bgra_layout_t>::type bgra2222_pixel_t;
+typedef image<bgra2222_pixel_t, false> bgra2222_image_t;
+typedef bgra2222_image_t::view_t bgra2222_view_t;
+
 typedef packed_pixel_type<bits16, boost::mpl::vector3_c<unsigned, 5, 6, 5>, bgr_layout_t>::type rgb565_pixel_t;
 typedef image<rgb565_pixel_t, false> rgb565_image_t;
 typedef rgb565_image_t::view_t rgb565_view_t;
@@ -34,10 +41,6 @@ typedef rgb565_image_t::view_t rgb565_view_t;
 typedef packed_pixel_type<bits16, boost::mpl::vector3_c<unsigned, 6, 5, 5>, rgb_layout_t>::type rgb655_pixel_t;
 typedef image<rgb655_pixel_t, false> rgb655_image_t;
 typedef rgb655_image_t::view_t rgb655_view_t;
-
-typedef packed_pixel_type<bits8, boost::mpl::vector4_c<unsigned, 2, 2, 2, 2>, bgra_layout_t>::type bgra2222_pixel_t;
-typedef image<bgra2222_pixel_t, false> bgra2222_image_t;
-typedef bgra2222_image_t::view_t bgra2222_view_t;
 
 typedef packed_pixel_type<bits16, boost::mpl::vector4_c<unsigned, 4, 4, 4, 4>, bgr_layout_t>::type bgra4444_pixel_t;
 typedef image<bgra4444_pixel_t, false> bgra4444_image_t;

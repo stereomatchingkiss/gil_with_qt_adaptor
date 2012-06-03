@@ -36,7 +36,7 @@
 
 /*
  * Test the factory function "create_qt_iview" could work or not
- * This test only aim for bit_aligned_images
+ * This test only aim for bit_aligned_images and haven't finish yet
  *
  * @param :
  *  SrcType : view type of the source image
@@ -56,23 +56,6 @@ static void qt_bit_aligned_view_test(int format_num, std::map<int, QString> &tab
     qDebug()<<*it;
     std::bitset<8> bitData(*it);
     std::cout<<bitData<<std::endl;
-
-    //qt::gray1_view_t src_view;
-    //boost::gil::gray8_view_t view;
-   // boost::gil::bit_aligned_image1_type<1, boost::gil::gray_layout_t> image_t;
-    //image_t image(640, 480);
-
-    //auto view = qt::create_qt_iview<SrcType>(src);
-    //boost::gil::copy_pixels(qt::create_qt_iview<SrcType>(src), qt::create_qt_iview<DstType>(dst) );
-    /*bool equal = src == dst;
-    QString const img_name = "lena_" + table[format_num] + ".png";
-
-    if(equal)
-        std::cout << "the result of [" << img_name.toStdString() << "] is correct"<<std::endl;
-    else
-        std::cout << "the result of [" << img_name.toStdString() << "] is incorrect"<<std::endl;
-
-    dst.save("../GIL_with_Qt/images_00/lena/" + img_name);*/
 }
 
 /*
@@ -145,6 +128,9 @@ private :
 
 void read_bit_aligned_image();
 
+/*
+ * Haven't finished yet
+ */
 void read_packed_aligned_image();
 
 #endif // IVIEW_FACTORY_UNIT_TEST_HPP

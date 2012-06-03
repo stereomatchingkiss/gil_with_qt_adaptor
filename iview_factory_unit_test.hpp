@@ -92,8 +92,12 @@ static void qt_packed_aligned_view_test(int format_num, std::map<int, QString> &
     dst.save("../GIL_with_Qt/images_00/lena/" + img_name);
 }
 
+/*
+ * copy the contents of the bit aligned image(view), this functor is designed to
+ * cooperate with boost::mpl::for_each
+ */
 struct copy_bit_aligned_image
-{
+{    
     copy_bit_aligned_image(std::vector<int> const &format_num, std::map<int, QString> &table)
         : format_num_(format_num), table_(table), i(0) {}
 
@@ -104,11 +108,15 @@ struct copy_bit_aligned_image
     }
 
 private :
-    std::vector<int> const &format_num_;
-    std::map<int, QString> &table_;
-    int i;
+    std::vector<int> const &format_num_; //save the key you want to fetch into the table_
+    std::map<int, QString> &table_; //table of format number and its details
+    int i; //index of format_num_
 };
 
+/*
+ * copy the contents of the packed aligned image(view), this functor is designed to
+ * cooperate with boost::mpl::for_each
+ */
 struct copy_packed_aligned_image
 {
     copy_packed_aligned_image(std::vector<int> const &format_num, std::map<int, QString> &table)
@@ -121,15 +129,19 @@ struct copy_packed_aligned_image
     }
 
 private :
-    std::vector<int> const &format_num_;
-    std::map<int, QString> &table_;
-    int i;
+    std::vector<int> const &format_num_; //save the key you want to fetch into the table_
+    std::map<int, QString> &table_; //table of format number and its details
+    int i; //index of format_num_
 };
-
-void read_bit_aligned_image();
 
 /*
  * Haven't finished yet
+ */
+void read_bit_aligned_image();
+
+/*
+ * read the bit aligned image and copy
+ * the contents of it
  */
 void read_packed_aligned_image();
 

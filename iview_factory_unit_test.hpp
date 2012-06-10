@@ -45,14 +45,14 @@
  *  table : a mapping table of the enumerator number to the format of QImage
  */
 template<typename SrcType, typename DstType = SrcType>
-static void qt_bit_aligned_view_test(int format_num, std::map<int, QString> &table)
+void qt_bit_aligned_view_test(int format_num, std::map<int, QString> &table)
 {
     QImage src("../GIL_with_Qt/images_00/lena/lena.jpg");
     src = src.convertToFormat(QImage::Format(format_num) );
     QImage dst(src.width(), src.height(), src.format());
 
     namespace qt = boost::gil::qt;
-    unsigned char *it = src.bits();
+    auto *it = src.bits();
     qDebug()<<*it;
     std::bitset<8> bitData(*it);
     std::cout<<bitData<<std::endl;
@@ -69,7 +69,7 @@ static void qt_bit_aligned_view_test(int format_num, std::map<int, QString> &tab
  *  table : a mapping table of the enumerator number to the format of QImage
  */
 template<typename SrcType, typename DstType = SrcType>
-static void qt_packed_aligned_view_test(int format_num, std::map<int, QString> &table)
+void qt_packed_aligned_view_test(int format_num, std::map<int, QString> &table)
 {                
     QImage src("../GIL_with_Qt/images_00/lena/lena.jpg");
     src = src.convertToFormat(QImage::Format(format_num) );

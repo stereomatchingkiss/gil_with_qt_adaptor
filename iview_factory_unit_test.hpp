@@ -44,7 +44,7 @@
  *  format_num : number of the format(htp://qt-project.org/doc/qt-4.8/qimage.html#Format-enum)
  *  table : a mapping table of the enumerator number to the format of QImage
  */
-template<typename SrcType, typename DstType = SrcType>
+template<typename SrcType, typename DstType>
 void qt_bit_aligned_view_test(int format_num, std::map<int, QString> &table)
 {
     QImage src("../GIL_with_Qt/images_00/lena/lena.jpg");
@@ -68,7 +68,7 @@ void qt_bit_aligned_view_test(int format_num, std::map<int, QString> &table)
  *  format_num : number of the format(htp://qt-project.org/doc/qt-4.8/qimage.html#Format-enum)
  *  table : a mapping table of the enumerator number to the format of QImage
  */
-template<typename SrcType, typename DstType = SrcType>
+template<typename SrcType, typename DstType>
 void qt_packed_aligned_view_test(int format_num, std::map<int, QString> &table)
 {                
     QImage src("../GIL_with_Qt/images_00/lena/lena.jpg");
@@ -104,7 +104,7 @@ struct copy_bit_aligned_image
     template<typename T>
     void operator()(T const&)
     {
-        qt_bit_aligned_view_test<T>(format_num_[i++], table_);
+        qt_bit_aligned_view_test<T, T>(format_num_[i++], table_);
     }
 
 private :
@@ -125,7 +125,7 @@ struct copy_packed_aligned_image
     template<typename T>
     void operator()(T const&)
     {
-        qt_packed_aligned_view_test<T>(format_num_[i++], table_);
+        qt_packed_aligned_view_test<T, T>(format_num_[i++], table_);
     }
 
 private :

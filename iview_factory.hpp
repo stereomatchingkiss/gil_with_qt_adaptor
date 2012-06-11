@@ -70,10 +70,10 @@ class qt_iview_factory<View, QImage&>
 /*
  * easy function for qt_iview_factory
  */
-template<typename View, typename Source = QImage>
-inline View const create_qt_iview(typename is_const_source<View, Source>::type img)
+template<typename View>
+inline View const create_qt_iview(typename is_const_source<View, QImage>::type img)
 {
-    return qt_iview_factory<View, typename is_const_source<View, Source>::type>::create_iview(img);
+    return qt_iview_factory<View, typename is_const_source<View, QImage>::type>::create_iview(img);
 }
 
 /*
@@ -84,7 +84,7 @@ inline View const create_qt_iview(typename is_const_source<View, Source>::type i
  *  will throw qt_image_view_exception(inherit std::exception)
  *  if it is an invalid format
  */
-template<typename AnyView = qt_view_lazy>
+template<typename AnyView>
 boost::gil::any_image_view<AnyView> const create_qt_iview_dy(QImage &img)
 {
     using namespace boost::gil;

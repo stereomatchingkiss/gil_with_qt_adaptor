@@ -1,6 +1,6 @@
 #include "iview_factory_unit_test.hpp"
 
-int main(int argc, char *argv[])
+int main()
 {                
     //read_bit_aligned_image(); //haven't finished yet
     read_packed_aligned_image();

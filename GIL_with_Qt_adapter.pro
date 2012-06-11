@@ -3,14 +3,13 @@ CONFIG += console
 #CONFIG -= qt
 QT       += core gui
 
-QMAKE_CXXFLAGS += -std=c++0x
+#QMAKE_CXXFLAGS += -std=c++0x
 
 INCLUDEPATH += ../../boost_minGW/boost_1_49_0
-INCLUDEPATH += ../Qt_simple_gui
+#INCLUDEPATH += ../Qt_simple_gui
 
 SOURCES += main.cpp \
-    iview_factory_unit_test.cpp \
-    ../Qt_simple_gui/image_details.cpp
+    iview_factory_unit_test.cpp
 
 HEADERS += \
     is_const_source.hpp \

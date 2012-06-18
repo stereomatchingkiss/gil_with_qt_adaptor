@@ -1,5 +1,5 @@
 /*
-    Copyright 2008 stereomatching
+    Copyright 2012 stereomatching
     Use, modification and distribution are subject to the Boost Software License,
     Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt).
@@ -13,11 +13,9 @@
 /// \brief
 /// \author stereomatching \n
 ///
-/// \date 2008 \n
+/// \date 2012 \n
 ///
 ////////////////////////////////////////////////////////////////////////////////////////
-
-#include <cstdint>
 
 #include <boost/gil/packed_pixel.hpp>
 #include <boost/gil/typedefs.hpp>
@@ -48,7 +46,11 @@ typedef rgb565_image_t::const_view_t bgra4444c_view_t;
 typedef boost::mpl::vector<gray8_view_t, bgra8_view_t, rgb8_view_t> qt_view_lazy;
 typedef boost::mpl::vector<gray8c_view_t, bgra8c_view_t, rgb8c_view_t> qt_c_view_lazy;
 
-} // namespace opencv
+typedef boost::mpl::vector<gray8_view_t, bgra8_view_t, rgb565_view_t, rgb655_view_t, bgra4444_view_t> qt_packed_view;
+typedef boost::mpl::vector<gray8c_view_t, bgra8c_view_t, rgb565c_view_t, rgb655c_view_t, bgra4444c_view_t> qt_c_packed_view;
+
+
+} // namespace qt
 } // namespace gil
 } // namespace boost
 

@@ -92,6 +92,16 @@ void qt_packed_aligned_view_test(int format_num, std::map<int, QString> &table)
 }
 
 /*
+ * test the factory function "create_qt_iview_dy" could work or not
+ * This test only aim for packed_aligned_images
+ *
+ * @param :
+ *  format_num : number of the format(htp://qt-project.org/doc/qt-4.8/qimage.html#Format-enum)
+ *  table : a mapping table of the enumerator number to the format of QImage
+ */
+void qt_packed_aligned_view_test_dy(int format_num, std::map<int, QString> &table);
+
+/*
  * copy the contents of the bit aligned image(view), this functor is designed to
  * cooperate with boost::mpl::for_each
  */
@@ -143,5 +153,11 @@ void read_bit_aligned_image();
  * the contents of it
  */
 void read_packed_aligned_image();
+
+/*
+ * read the packed aligned image and copy
+ * the contents of it
+ */
+void read_packed_aligned_image_dy();
 
 #endif // IVIEW_FACTORY_UNIT_TEST_HPP

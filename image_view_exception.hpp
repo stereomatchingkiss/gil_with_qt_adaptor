@@ -27,7 +27,7 @@ class qt_image_view_exception : public std::exception
     qt_image_view_exception () throw() : std::exception() {}
     qt_image_view_exception (qt_image_view_exception const&) throw() {}
     qt_image_view_exception& operator= (qt_image_view_exception const &data) throw()
-    { *this = data; return *this; }
+    { return *this; }
     virtual ~qt_image_view_exception() throw() {}
     virtual char const *what() const throw()
     {

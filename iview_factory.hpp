@@ -21,11 +21,11 @@
 #include <boost/gil/typedefs.hpp>
 
 #include <boost/gil/extension/dynamic_image/any_image_view.hpp>
+#include <boost/gil/extension/dynamic_image/apply_operation.hpp>
 
 #include <QtGui/QImage>
 
 #include "is_const_source.hpp"
-#include "image_view_exception.hpp"
 #include "image_view_typedef.hpp"
 
 namespace boost{ namespace gil { namespace qt {
@@ -38,7 +38,7 @@ namespace boost{ namespace gil { namespace qt {
  *  View : the view of GIL you want to create
  *  Image : the type of the image(ex : QImage of Qt)
  */
-template<typename View, typename Source = QImage>
+template<typename View, typename Source>
 class qt_iview_factory;
 
 template<typename View>
@@ -122,7 +122,7 @@ boost::gil::any_image_view<AnyView> const create_qt_iview_dy(QImage &img)
         break;
 
       case QImage::Format_Invalid :
-        throw qt_image_view_exception();
+        throw std::runtime_error("this is an invalid type\n");
         break;
     }
 }

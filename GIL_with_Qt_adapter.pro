@@ -9,7 +9,8 @@ INCLUDEPATH += ../../boost_minGW/boost_1_49_0
 #INCLUDEPATH += ../Qt_simple_gui
 
 SOURCES += main.cpp \
-    iview_factory_unit_test.cpp
+    iview_factory_unit_test.cpp \
+    format_table.cpp
 
 HEADERS += \
     is_const_source.hpp \
@@ -17,5 +18,6 @@ HEADERS += \
     iview_factory_unit_test.hpp \
     image_view_exception.hpp \
     image_view_typedef.hpp \
-    iview_factory.hpp
+    iview_factory.hpp \
+    format_table.hpp
 

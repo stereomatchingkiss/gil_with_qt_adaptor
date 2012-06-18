@@ -1,5 +1,5 @@
 /*
-    Copyright 2008 stereomatching
+    Copyright 2012 stereomatching
     Use, modification and distribution are subject to the Boost Software License,
     Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt).
@@ -13,11 +13,9 @@
 /// \brief
 /// \author stereomatching \n
 ///
-/// \date 2008 \n
+/// \date 2012 \n
 ///
 ////////////////////////////////////////////////////////////////////////////////////////
-
-#include <stdexcept>
 
 #include <boost/gil/image_view_factory.hpp>
 #include <boost/gil/typedefs.hpp>

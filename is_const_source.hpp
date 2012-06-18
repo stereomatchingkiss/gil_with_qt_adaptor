@@ -1,5 +1,5 @@
 /*
-    Copyright 2008 stereomatching
+    Copyright 2012 stereomatching
     Use, modification and distribution are subject to the Boost Software License,
     Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt).
@@ -13,7 +13,7 @@
 /// \brief
 /// \author stereomatching \n
 ///
-/// \date 2008 \n
+/// \date 2012 \n
 ///
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -46,8 +46,8 @@ struct is_const_source
                                        >::type::type type;
 };
 
-} // namespace opencv
 } // namespace gil
+} // namespace boost
 
 
 #endif // IS_CONST_SOURCE_HPP

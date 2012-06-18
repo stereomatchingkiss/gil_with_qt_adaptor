@@ -75,7 +75,7 @@ template<> struct qimage_channel_type<bgra4444_view_t>
 };
 
 /*
- * Create a QImage from view, the QImage referenced by the view
+ * Create a shallow QImage from view, the QImage referenced by the view
  * must remain valid throughout the life of the QImage.
  * QImage is an implicit share object, so we don't need shared_ptr
  * to wrap it.
@@ -93,10 +93,27 @@ inline QImage const create_qimage( View const &view )
     return QImage(gil::interleaved_view_get_raw_data(view),
                   view.width(),
                   view.height(),
-                  ((view.width() * ctype::depth + 31) / 32) * 4,
+                  ((view.width() * ctype::depth + 31) / 32) * 4, //bytes per line
                   ctype::format);
     //or return ((view.width() * depth + 31) >> 5) << 2;
-    //I am not sure this would be a faster solution on a modern cpu or not
+    //I am not sure this would be a faster solution on a modern cpu
+}
+
+/*
+ * same as create_qimage, but this one will perform deep copy
+ */
+template< typename View >
+inline QImage const create_qimage_deep( View const &view )
+{
+    namespace gil = boost::gil;
+    typedef gil::qt::qimage_channel_type<View> ctype;
+    return QImage(gil::interleaved_view_get_raw_data(view),
+                  view.width(),
+                  view.height(),
+                  ((view.width() * ctype::depth + 31) / 32) * 4, //bytes per line
+                  ctype::format).copy();
+    //or return ((view.width() * depth + 31) >> 5) << 2;
+    //I am not sure this would be a faster solution on a modern cpu
 }
 
 } // namespace qt

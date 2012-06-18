@@ -40,8 +40,8 @@ typedef rgb655_image_t::const_view_t rgb655c_view_t;
 
 typedef packed_pixel_type<bits16, boost::mpl::vector4_c<unsigned, 4, 4, 4, 4>, bgr_layout_t>::type bgra4444_pixel_t;
 typedef image<bgra4444_pixel_t, false> bgra4444_image_t;
-typedef rgb565_image_t::view_t bgra4444_view_t;
-typedef rgb565_image_t::const_view_t bgra4444c_view_t;
+typedef bgra4444_image_t::view_t bgra4444_view_t;
+typedef bgra4444_image_t::const_view_t bgra4444c_view_t;
 
 typedef boost::mpl::vector<gray8_view_t, bgra8_view_t, rgb8_view_t> qt_view_lazy;
 typedef boost::mpl::vector<gray8c_view_t, bgra8c_view_t, rgb8c_view_t> qt_c_view_lazy;

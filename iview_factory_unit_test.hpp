@@ -156,7 +156,7 @@ void read_packed_aligned_image();
 
 /*
  * read the packed aligned image and copy
- * the contents of it
+ * the contents of it dynamically
  */
 void read_packed_aligned_image_dy();
 

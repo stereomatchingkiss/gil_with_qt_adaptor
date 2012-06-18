@@ -1,5 +1,5 @@
 /*
-    Copyright 2008 stereomatching
+    Copyright 2012 stereomatching
     Use, modification and distribution are subject to the Boost Software License,
     Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt).
@@ -13,12 +13,11 @@
 /// \brief
 /// \author stereomatching \n
 ///
-/// \date 2008 \n
+/// \date 2012 \n
 ///
 ////////////////////////////////////////////////////////////////////////////////////////
 
 #include <bitset>
-#include <fstream>
 #include <iostream>
 #include <map>
 #include <vector>
@@ -75,8 +74,8 @@ void qt_packed_aligned_view_test(int format_num, std::map<int, QString> &table)
     src = src.convertToFormat(QImage::Format(format_num) );
     QImage dst(src);
 
-    //this will cause the program crash when the format is "Format_Indexed8"
-    //still still don't know the reason yet
+    //this line will cause the program crash when the format is "Format_Indexed8"
+    //still don't know the reason yet(a bug of QImage, not GIL)
     //QImage dst(src.width(), src.height(), src.format());
 
     namespace qt = boost::gil::qt;
@@ -140,7 +139,7 @@ private :
 void read_bit_aligned_image();
 
 /*
- * read the bit aligned image and copy
+ * read the packed aligned image and copy
  * the contents of it
  */
 void read_packed_aligned_image();

@@ -43,7 +43,10 @@ template<> struct qimage_channel_type<boost::gil::gray8_view_t>
  * There are three kind of QImage could be present by bgra8_view_t.
  * They are "QImage::Format_RGB32", "QImage::Format_ARGB32" and
  * "QImage::Format_ARGB32_Premultiplied".
+ *
  * Now the qimage_channel_type only support "QImage::Format_ARGB32"
+ * Other format will be supported after default template parameter
+ * of function is supported by vc
  */
 template<> struct qimage_channel_type<boost::gil::bgra8_view_t>
 {
@@ -66,7 +69,10 @@ template<> struct qimage_channel_type<rgb655_view_t>
 /*
  * There are three kind of QImage could be present by bgra8_view_t
  * they are "QImage::Format_ARGB444_Premultiplied" and "QImage::Format_RGB444".
+ *
  * Now the qimage_channel_type only support "QImage::Format_RGB444"
+ * Other format will be supported after default template parameter
+ * of function is supported by vc
  */
 template<> struct qimage_channel_type<bgra4444_view_t>
 {
@@ -76,7 +82,9 @@ template<> struct qimage_channel_type<bgra4444_view_t>
 
 /*
  * Create a shallow QImage from view, the QImage referenced by the view
- * must remain valid throughout the life of the QImage.
+ * must remain valid throughout the life of the QImage.You can make a
+ * deep copy if concatenate with ".copy()".
+ *
  * QImage is an implicit share object, so we don't need shared_ptr
  * to wrap it.
  *
@@ -84,8 +92,11 @@ template<> struct qimage_channel_type<bgra4444_view_t>
  * QImage::Format_ARGB32.
  * When the View is "bgra4444_view_t", the QImage will always be
  * QImage::Format_RGB444.
+ *
+ * Other format will be supported after default template parameter
+ * of function is supported by vc
  */
-template< typename View >
+template<typename View>
 inline QImage const create_qimage( View const &view )
 {
     namespace gil = boost::gil;
@@ -94,26 +105,7 @@ inline QImage const create_qimage( View const &view )
                   view.width(),
                   view.height(),
                   ((view.width() * ctype::depth + 31) / 32) * 4, //bytes per line
-                  ctype::format);
-    //or return ((view.width() * depth + 31) >> 5) << 2;
-    //I am not sure this would be a faster solution on a modern cpu
-}
-
-/*
- * same as create_qimage, but this one will perform deep copy
- */
-template< typename View >
-inline QImage const create_qimage_deep( View const &view )
-{
-    namespace gil = boost::gil;
-    typedef gil::qt::qimage_channel_type<View> ctype;
-    return QImage(gil::interleaved_view_get_raw_data(view),
-                  view.width(),
-                  view.height(),
-                  ((view.width() * ctype::depth + 31) / 32) * 4, //bytes per line
-                  ctype::format).copy();
-    //or return ((view.width() * depth + 31) >> 5) << 2;
-    //I am not sure this would be a faster solution on a modern cpu
+                  ctype::format);    
 }
 
 } // namespace qt
